@@ -44,7 +44,7 @@ const scaleAnimation = {
   closed: { scale: 0, x: "-50%", y: "-50%", transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] } }
 }
 
-export default function Home() {
+export default function Projects() {
 
   const [modal, setModal] = useState({ active: false, index: 0 })
   const { active, index } = modal;
