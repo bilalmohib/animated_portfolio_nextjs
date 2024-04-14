@@ -10,14 +10,14 @@ interface ProjectProps {
     manageModal: (active: boolean, index: number, x: number, y: number, link: string) => void;
 }
 
-export default function Project(
+const Project = (
     {
         index,
         title,
         category,
         link,
         manageModal
-    }: ProjectProps) {
+    }: ProjectProps) => {
 
     return (
         <div onMouseEnter={(e) => { manageModal(true, index, e.clientX, e.clientY, link) }} onMouseLeave={(e) => { manageModal(false, index, e.clientX, e.clientY, link) }} className={styles.project}>
@@ -26,3 +26,4 @@ export default function Project(
         </div>
     )
 }
+export default Project;

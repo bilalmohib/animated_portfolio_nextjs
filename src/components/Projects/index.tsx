@@ -1,11 +1,11 @@
 'use client';
 import styles from './style.module.scss'
-import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import Image from 'next/image';
-import Project from '@/components/Projects/components/Project';
+import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import Rounded from '../../common/RoundedButton';
+import Project from './components/Project';
 
 const projects = [
   {
@@ -44,8 +44,7 @@ const scaleAnimation = {
   closed: { scale: 0, x: "-50%", y: "-50%", transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] } }
 }
 
-export default function Projects() {
-
+function Projects() {
   const [modal, setModal] = useState({ active: false, index: 0 })
   const { active, index } = modal;
   const modalContainer = useRef(null);
@@ -149,3 +148,4 @@ export default function Projects() {
     </main>
   )
 }
+export default Projects;
