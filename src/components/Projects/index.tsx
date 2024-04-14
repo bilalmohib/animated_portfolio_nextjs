@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import Rounded from '../../common/RoundedButton';
-import Project from './components/Project/index';
+import ProjectNew from './components/ProjectNew/index';
 
 const projects = [
   {
@@ -94,7 +94,7 @@ const Projects = () => {
       <div className={styles.body}>
         {
           projects.map((project, index) => {
-            return <Project
+            return <ProjectNew
               index={index}
               title={project.title}
               manageModal={manageModal}

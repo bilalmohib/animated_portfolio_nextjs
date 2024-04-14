@@ -10,7 +10,7 @@ interface ProjectProps {
     manageModal: (active: boolean, index: number, x: number, y: number, link: string) => void;
 }
 
-const Project = (
+const ProjectNew = (
     {
         index,
         title,
@@ -26,4 +26,4 @@ const Project = (
         </div>
     )
 }
-export default Project;
+export default ProjectNew;
