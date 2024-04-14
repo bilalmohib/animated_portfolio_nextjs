@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import Rounded from '../../common/RoundedButton';
-import Project from './components/Project';
+/* import Project from './components/Project'; */
 
 const projects = [
   {
@@ -92,7 +92,7 @@ const Projects = () => {
   return (
     <main onMouseMove={(e) => { moveItems(e.clientX, e.clientY) }} className={styles.projects}>
       <div className={styles.body}>
-        {
+        {/* {
           projects.map((project, index) => {
             return <Project
               index={index}
@@ -103,7 +103,7 @@ const Projects = () => {
               category={project.category}
             />
           })
-        }
+        } */}
       </div>
       <Rounded>
         <p>More work</p>
