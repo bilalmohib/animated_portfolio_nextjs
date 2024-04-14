@@ -11,7 +11,7 @@ import Rounded from '../../common/RoundedButton';
 import Magnetic from '../../common/Magnetic';
 import Link from 'next/link';
 
-export default function index() {
+export default function Header() {
     const header = useRef(null);
     const [isActive, setIsActive] = useState(false);
     const pathname = usePathname();

@@ -8,7 +8,7 @@ import { slideUp } from './animation';
 import { motion } from 'framer-motion';
 import Magnetic from '@/common/Magnetic';
 
-export default function Home() {
+export default function Landing() {
 
   const firstText = useRef(null);
   const secondText = useRef(null);
@@ -73,7 +73,7 @@ export default function Home() {
               <span className='text-indigo-500 ml-6'>Developer</span>
             </h1>
             <p className='mt-6 pr-52'>
-              Programming is not about what you know, it's about what you can figure out.
+              Programming is not about what you know, it&apos;s about what you can figure out.
             </p>
           </div>
           <div className='h-[90vh] flex flex-col justify-center items-center'>

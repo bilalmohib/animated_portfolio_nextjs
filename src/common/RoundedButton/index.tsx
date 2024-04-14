@@ -10,7 +10,7 @@ interface RoundedButtonProps {
   [key: string]: any
 }
 
-export default function index(
+export default function RoundedButton(
   {
     children,
     backgroundColor = "#455CE9",
