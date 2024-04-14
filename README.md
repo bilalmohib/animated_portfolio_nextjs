@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Website 🌟
 
-## Getting Started
+This is a portfolio website built using Next.js ⚛️, Framer Motion 🎥, and GSAP 🌈. It showcases your work and skills in an amazing and visually appealing way. ✨
 
-First, run the development server:
+## Features 🚀
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Responsive design 📱
+- Smooth animations and transitions using Framer Motion and GSAP 🎯
+- Dynamic routing and page transitions with Next.js 🌐
+- Showcase your projects, skills, and contact information 💼
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation ⚙️
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Clone the repository: `git clone https://github.com/bilalmohib/animated_portfolio_nextjs.git`
+2. Install dependencies: `pnpm install`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage 📝
 
-## Learn More
+1. Customize the content in the `src` directory to match your own portfolio.
+2. Add your own projects, skills, and contact information.
+3. Run the development server: `pnpm run dev`
+4. Open your browser and visit `http://localhost:3000` to see your portfolio website.
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies Used 🛠️
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js: A React framework for building server-side rendered and static websites.
+- Framer Motion: A library for creating smooth animations and transitions in React.
+- GSAP: GreenSock Animation Platform, a powerful JavaScript animation library.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing 🤝
 
-## Deploy on Vercel
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License 📄
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements 🙏
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Framer Motion Documentation](https://www.framer.com/api/motion/)
+- [GSAP Documentation](https://greensock.com/docs/)

@@ -1,4 +1,4 @@
-.menu{
+.menu {
     height: 100vh;
     background-color: rgb(41, 41, 41);
     position: fixed;
@@ -6,7 +6,8 @@
     top: 0;
     color: white;
     z-index: 3;
-    .body{
+
+    .body {
         box-sizing: border-box;
         height: 100%;
         padding: 100px;
@@ -34,7 +35,7 @@
                 color: white;
                 font-weight: 300;
             }
-            
+
         }
     }
 }
