@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import Rounded from '../../common/RoundedButton';
-import Project from './components/Project';
+import Project from './components/Project/index';
 
 const projects = [
   {
