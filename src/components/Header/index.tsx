@@ -45,10 +45,10 @@ export default function Header() {
         <>
             <nav ref={header} className={`border-solid border-black border-x-0 border-t-0 border-b-[0.5px] fixed top-0 bg-transparent w-full z-10 flex justify-between items-center h-[70px] px-5 ${styles.navbackground}`}>
                 <div className='h-[70px] flex flex-col justify-center items-center'>
-                    <h3 className='text-black text-4xl font-medium my-auto'>Muhammad Bilal</h3>
+                    <h3 className='text-black text-xl sm:text-4xl font-medium my-auto'>Muhammad Bilal</h3>
                 </div>
 
-                <div className='gap-20 flex'>
+                <div className='gap-4 lg:gap-20 hidden md:flex'>
                     <Magnetic>
                         <Link href='/work' className='block hover:underline text-lg hover:text-indigo-600'>Work</Link>
                     </Magnetic>
@@ -61,10 +61,10 @@ export default function Header() {
                 </div>
 
                 <div className='flex flex-row gap-6'>
-                    <h5 className='h-[70px] flex flex-col justify-center items-center'>{date} / PK</h5>
+                    <h5 className='h-[70px] hidden sm:flex flex-col justify-center items-center'>{date} / PK</h5>
                     <div className='my-auto'>
                         <Magnetic>
-                            <button className='px-4 py-2 bg-black rounded-lg text-white'
+                            <button className='px-2 sm:px-4 py-1 sm:py-2 bg-black rounded-lg text-white'
                                 onClick={() => {
                                     // Open in new tab
                                     window.open("https://www.upwork.com/freelancers/~013a136c7081592898")
