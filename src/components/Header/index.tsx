@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './style.module.scss';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import Nav from './nav';
 import gsap from 'gsap';
@@ -17,6 +17,7 @@ export default function Header() {
     const pathname = usePathname();
     const button = useRef(null);
     const [date, setDate] = useState<string>("...");
+    const router = useRouter();
 
     useEffect(() => {
         if (isActive) setIsActive(false)
@@ -44,7 +45,11 @@ export default function Header() {
     return (
         <>
             <nav ref={header} className={`border-solid border-black border-x-0 border-t-0 border-b-[0.5px] fixed top-0 bg-transparent w-full z-10 flex justify-between items-center h-[70px] px-5 ${styles.navbackground}`}>
-                <div className='h-[70px] flex flex-col justify-center items-center'>
+                <div className='h-[70px] flex flex-col justify-center items-center cursor-pointer'
+                    onClick={() => {
+                        router.push('/')
+                    }}
+                >
                     <h3 className='text-black text-xl sm:text-4xl font-medium my-auto'>Muhammad Bilal</h3>
                 </div>
 
