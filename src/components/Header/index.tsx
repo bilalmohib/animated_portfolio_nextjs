@@ -64,7 +64,12 @@ export default function Header() {
                     <h5 className='h-[70px] flex flex-col justify-center items-center'>{date} / PK</h5>
                     <div className='my-auto'>
                         <Magnetic>
-                            <button className='px-4 py-2 bg-black rounded-lg text-white'>
+                            <button className='px-4 py-2 bg-black rounded-lg text-white'
+                                onClick={() => {
+                                    // Open in new tab
+                                    window.open("https://www.upwork.com/freelancers/~013a136c7081592898")
+                                }}
+                            >
                                 <HiArrowUpRight color='white' className='inline mr-2' />
                                 Hire Me
                             </button>
