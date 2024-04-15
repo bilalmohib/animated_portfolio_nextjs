@@ -1,4 +1,4 @@
-.slidingImages{
+.slidingImages {
     display: flex;
     flex-direction: column;
     gap: 3vw;
@@ -6,33 +6,39 @@
     margin-top: 200px;
     background-color: white;
     z-index: 1;
-    .slider{
+
+    .slider {
         display: flex;
         position: relative;
         gap: 3vw;
         width: 120vw;
         left: -10vw;
-        .project{
+
+        .project {
             width: 25%;
             height: 20vw;
             display: flex;
             align-items: center;
             justify-content: center;
-            .imageContainer{
+
+            .imageContainer {
                 position: relative;
                 width: 80%;
                 height: 80%;
-                img{
+
+                img {
                     object-fit: cover;
                 }
             }
         }
     }
-    .circleContainer{
+
+    .circleContainer {
         background-color: red;
         position: relative;
         margin-top: 100px;
-        .circle{
+
+        .circle {
             height: 1550%;
             width: 120%;
             left: -10%;
@@ -41,6 +47,61 @@
             z-index: 1;
             position: absolute;
             box-shadow: 0px 60px 50px rgba(0, 0, 0, 0.748);
+        }
+    }
+}
+
+@media all and (max-width:990px) {
+    .slidingImages {
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+        position: relative;
+        margin-top: 50px;
+        background-color: white;
+        z-index: 1;
+
+        .slider {
+            display: flex;
+            position: relative;
+            gap: 2vw;
+            width: 100vw;
+            left: -10vw;
+
+            .project {
+                width: 25%;
+                height: 20vw;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .imageContainer {
+                    position: relative;
+                    width: 80%;
+                    height: 80%;
+
+                    img {
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+
+        .circleContainer {
+            background-color: red;
+            position: relative;
+            margin-top: 100px;
+
+            .circle {
+                height: 1550%;
+                width: 120%;
+                left: -10%;
+                border-radius: 0 0 50% 50%;
+                background-color: white;
+                z-index: 1;
+                position: absolute;
+                box-shadow: 0px 60px 50px rgba(0, 0, 0, 0.748);
+            }
         }
     }
 }

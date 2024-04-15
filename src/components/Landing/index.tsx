@@ -65,24 +65,24 @@ export default function Landing() {
         <p>Designer & Developer</p>
       </div> */}
       <div className='w-full mt-[70px] flex flex-col'>
-        <div className='flex flex-row justify-between px-5'>
-          <div>
-            <h1 className='text-8xl font-medium mt-40'>
-              <span className='text-black'>Full Stack</span> <br />
+        <div className='flex flex-col md:flex-row justify-between px-5'>
+          <div className='text-center md:text-left'>
+            <h1 className='text-4xl md:text-5xl llg:text-8xl font-medium mt-24 md:mt-40'>
+              <span className='text-black'>Full Stack</span> <br className='hidden md:block' />
               <span className='text-blue-500'>Web</span>
-              <span className='text-indigo-500 ml-6'>Developer</span>
+              <span className='text-indigo-500 ml-2 md:ml-3 llg:ml-6'>Developer</span>
             </h1>
-            <p className='mt-6 pr-52'>
+            <p className='mt-6 md:pr-52'>
               Programming is not about what you know, it&apos;s about what you can figure out.
             </p>
           </div>
-          <div className='h-[90vh] flex flex-col justify-center items-center'>
+          <div className='h-full md:h-[90vh] flex flex-col justify-center items-center mt-10 md:mt-auto'>
             <div className='flex flex-col justify-center items-center h-full'>
               <div>
-                <h5 className='w-80 text-xl'>A full stack software developer specialized in creating websites, products and systems <span className='text-green-700'>frontend</span> to <span className='text-indigo-700'>backend</span> from scratch</h5>
+                <h5 className='w-80 text-xl px-6 ssm:px-1'>A full stack software developer specialized in creating websites, products and systems <span className='text-green-700'>frontend</span> to <span className='text-indigo-700'>backend</span> from scratch</h5>
               </div>
-              <hr className='my-4 border border-t-0 border-x-0 border-b-[1px] border-solid border-gray-600 w-full' />
-              <div className='flex gap-4'>
+              <hr className='my-4 border border-t-0 border-x-0 border-b-[1px] border-solid border-gray-600 w-10/12 ssm:w-full' />
+              <div className='flex justify-between md:justify-center gap-4'>
                 <Magnetic>
                   <button className='border border-solid border-black hover:bg-black hover:text-white py-2 px-4 transition duration-300 ease-in-out'>Contact</button>
                 </Magnetic>

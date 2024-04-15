@@ -1,4 +1,4 @@
-.project{
+.project {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -8,31 +8,109 @@
     cursor: pointer;
     transition: all 0.2s;
 
-    h2{
-        font-size: 60px;
+    h2 {
+        font-size: 50px;
         margin: 0px;
         font-weight: 400;
         transition: all 0.4s;
     }
 
-    p{
+    p {
         transition: all 0.4s;
         font-weight: 300;
     }
 
-    &:last-of-type{
+    &:last-of-type {
         border-bottom: 1px solid rgb(201, 201, 201);
     }
 
-    &:hover{
+    &:hover {
         opacity: 0.5;
 
-        h2{
+        h2 {
             transform: translateX(-10px);
         }
 
-        p{
+        p {
             transform: translateX(10px);
+        }
+    }
+}
+
+@media all and (max-width:1400px) {
+    .project {
+        padding: 50px 50px 50px 50px;
+        border-top: 1px solid rgb(201, 201, 201);
+        cursor: pointer;
+        transition: all 0.2s;
+
+        h2 {
+            font-size: 40px;
+            margin: 0px;
+            font-weight: 400;
+            transition: all 0.4s;
+        }
+
+        p {
+            transition: all 0.4s;
+            font-weight: 300;
+        }
+
+        &:last-of-type {
+            border-bottom: 1px solid rgb(201, 201, 201);
+        }
+
+        &:hover {
+            opacity: 0.5;
+
+            h2 {
+                transform: translateX(-10px);
+            }
+
+            p {
+                transform: translateX(10px);
+            }
+        }
+    }
+}
+
+@media all and (max-width:900px) {
+    .project {
+        padding: 50px 20px 50px 20px;
+        border-top: 1px solid rgb(201, 201, 201);
+        cursor: pointer;
+        transition: all 0.2s;
+
+        h2 {
+            font-size: 30px;
+            margin: 0px;
+            font-weight: 400;
+            transition: all 0.4s;
+        }
+    }
+}
+
+@media all and (max-width:760px) {
+    .project {
+        flex-direction: column;
+        padding: 30px 20px 30px 20px;
+        border-top: 1px solid rgb(201, 201, 201);
+        cursor: pointer;
+        transition: all 0.2s;
+
+        h2 {
+            font-size: 30px;
+            margin: 0px;
+            font-weight: 400;
+            transition: all 0.4s;
+            text-align: center;
+        }
+
+
+        p {
+            transition: all 0.4s;
+            font-weight: 300;
+            text-align: center;
         }
     }
 }

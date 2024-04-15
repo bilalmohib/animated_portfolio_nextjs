@@ -5,6 +5,7 @@
     right: 0;
     top: 0;
     color: white;
+    display: none;
     z-index: 3;
 
     .body {
@@ -15,14 +16,14 @@
         flex-direction: column;
         justify-content: space-between;
 
-        .nav{
+        .nav {
             display: flex;
             flex-direction: column;
             font-size: 56px;
             gap: 12px;
             margin-top: 80px;
 
-            .header{
+            .header {
                 color: rgb(153, 153, 153);
                 border-bottom: 1px solid rgb(153, 153, 153);
                 text-transform: uppercase;
@@ -30,12 +31,66 @@
                 margin-bottom: 40px;
             }
 
-            a{
+            a {
                 text-decoration: none;
                 color: white;
                 font-weight: 300;
             }
 
+        }
+    }
+}
+
+@media all and (max-width:760px) {
+    .menu {
+        display: block;
+    }
+}
+
+@media all and (max-width:600px) {
+    .menu {
+        height: 100vh;
+        width: 100vw;
+        background-color: rgb(41, 41, 41);
+        position: fixed;
+        right: 0;
+        top: 0;
+        color: white;
+        z-index: 3;
+        display: block;
+
+        .body {
+            box-sizing: border-box;
+            height: 100%;
+            padding-top: 100px;
+            padding-left: 40px;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .nav {
+                display: flex;
+                flex-direction: column;
+                font-size: 56px;
+                gap: 12px;
+                margin-top: 80px;
+
+                .header {
+                    color: rgb(153, 153, 153);
+                    border-bottom: 1px solid rgb(153, 153, 153);
+                    text-transform: uppercase;
+                    font-size: 11px;
+                    margin-bottom: 40px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 300;
+                }
+
+            }
         }
     }
 }

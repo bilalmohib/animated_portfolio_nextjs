@@ -34,6 +34,19 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 12s linear infinite',
       },
+      screens: {
+        "4xl": "1920px",
+        "3xl": "1700px",
+        "2xl": "1536px",
+        xl: "1280px",
+        llg: "1150px",
+        lg: "1024px",
+        mlg: "970px",
+        md: "768px",
+        sm: "640px",
+        ssm: "400px",
+        sssm: "330px"
+      },
     },
   },
   plugins: [

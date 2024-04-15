@@ -82,7 +82,7 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
-            <div ref={button} className={styles.headerButtonContainer}>
+            <div className={styles.headerButtonContainer}>
                 <Rounded onClick={() => { setIsActive(!isActive) }} className={`${styles.button}`}>
                     <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>
                 </Rounded>

@@ -1,7 +1,8 @@
 import './globals.css'
 import React from 'react';
 import { Inter } from 'next/font/google';
-import Header from '../components/Header';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'Muhammad Bilal Mohib-ul-Nabi - Full Stack Typescript/NextJS/FastAPI Developer',
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

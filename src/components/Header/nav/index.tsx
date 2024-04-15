@@ -50,7 +50,9 @@ export default function HeaderNav() {
                 key={index}
                 data={{ ...data, index }}
                 isActive={selectedIndicator == data.href}
-                setSelectedIndicator={setSelectedIndicator}>
+                setSelectedIndicator={setSelectedIndicator}
+                
+                >
               </Link>
             })
           }
