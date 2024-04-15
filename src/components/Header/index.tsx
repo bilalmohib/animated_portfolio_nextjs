@@ -54,12 +54,12 @@ export default function Header() {
                 </div>
 
                 <div className='gap-4 lg:gap-20 hidden md:flex'>
-                    <Magnetic>
+                    {/* <Magnetic>
                         <Link href='/work' className='block hover:underline text-lg hover:text-indigo-600'>Work</Link>
-                    </Magnetic>
-                    <Magnetic>
+                    </Magnetic> */}
+                    {/* <Magnetic>
                         <Link href='/about' className='block hover:underline text-lg hover:text-indigo-600'>About</Link>
-                    </Magnetic>
+                    </Magnetic> */}
                     <Magnetic>
                         <Link href='/contact' className='block hover:underline text-lg hover:text-indigo-600'>Contact</Link>
                     </Magnetic>
