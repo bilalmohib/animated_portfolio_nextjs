@@ -13,6 +13,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: 'https://www.upwork.com/freelancers/~013a136c7081592898',
             lastModified: new Date()
+        },
+        {
+            url: 'https://github.com/bilalmohib',
+            lastModified: new Date()
+        },
+        {
+            url: 'https://www.linkedin.com/in/bilalmohib',
+            lastModified: new Date()
         }
     ]
 }
