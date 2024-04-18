@@ -130,7 +130,12 @@ function Footer({ newsletter = true }) {
                                 Lets make something great together
                             </h3>
                             <div className="hidden lg:block">
-                                <Button href="#" variant="primaryOnDark" className="mt-12">
+                                <Button
+                                    href="https://www.upwork.com/freelancers/~013a136c7081592898"
+                                    target="_blank"
+                                    variant="primaryOnDark"
+                                    className="mt-12"
+                                >
                                     Book a call
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +158,7 @@ function Footer({ newsletter = true }) {
                                 excited to work with you on your next project.
                             </p>
                             <Link
-                                href="#"
+                                href="https://www.upwork.com/freelancers/~013a136c7081592898"
                                 className="mt-10 inline-flex items-center justify-center gap-x-2.5 rounded-full bg-white px-7 py-3 text-md font-semibold leading-none text-slate-700 duration-200 ease-in-out hover:bg-sky-50 lg:hidden"
                             >
                                 Book a call
