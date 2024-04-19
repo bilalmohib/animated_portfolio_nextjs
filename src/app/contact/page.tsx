@@ -1,11 +1,129 @@
+"use client";
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
-
+import { useEffect, useState } from 'react';
+/* import { db } from "@/db"; */
+import { z } from "zod"
+import { useFormik } from 'formik';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
+import { contactUsForm } from "@/db/schema";
+import axios from "axios";
+import { addContactUsForm } from "@/actions/contactUsFormActions";
 import Rounded from '../../common/RoundedButton';
+import { useSnackbar } from 'notistack'
+
+const validationSchema = z.object({
+    name: z.string().min(1, "Name is required").max(100),
+    email: z.string().min(1, "Email is required").email("Invalid email address"),
+    phone: z.string().min(5, "Phone is required"),
+    message: z.string().min(1, "Message is required"),
+});
 
 export default function ContactPage() {
-    let image = "https://as1.ftcdn.net/v2/jpg/01/44/50/82/1000_F_144508238_Fy3InkiNSB6nFRkDGB0ibEbTRNJaPK2U.jpg"
+    let image = "https://as1.ftcdn.net/v2/jpg/01/44/50/82/1000_F_144508238_Fy3InkiNSB6nFRkDGB0ibEbTRNJaPK2U.jpg";
+
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    // close all snackbars on unmount
+    useEffect(() => {
+        return () => {
+            closeSnackbar();
+        }
+    }, []);
+
+    const [servicesNeeded, setServicesNeeded] = useState
+        <{
+            webDevelopment: boolean,
+            webDesign: boolean,
+            consulting: boolean,
+            other: boolean
+        }>
+        ({
+            webDevelopment: false,
+            webDesign: false,
+            consulting: false,
+            other: false
+        });
+
+    const submitForm = async (data: z.infer<typeof validationSchema>) => {
+        console.log("Form Data just before sending to server ===> ", data);
+
+        const contactFormDetails = {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            message: data.message,
+            /*   servicesNeeded: servicesNeeded */
+        }
+
+        console.log("Contact Form Details ===> ", contactFormDetails);
+
+        /*         await fetch("/api/contactusForm", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(contactFormDetails),
+                }).then((response) => {
+                    if (response.ok) {
+                        console.log("Response ===> ", response);
+                        alert("Form submitted successfully");
+                    } else {
+                        alert("An error occurred, please try again later.")
+                    }
+                }).catch((error) => {
+                    console.log("Error:", error);
+                    alert("An error occurred, please try again later.")
+                }) */
+        try {
+            await addContactUsForm(data.name, data.email, data.phone, data.message).then(() => {
+                enqueueSnackbar('Thank you for contacting me. I will get back to you soon.', {
+                    variant: "default",
+                    autoHideDuration: 5000
+                });
+                // 
+                formik.resetForm();
+                let localServicesNeeded = {
+                    webDevelopment: false,
+                    webDesign: false,
+                    consulting: false,
+                    other: false
+                }
+
+                setServicesNeeded(localServicesNeeded);
+            }).catch((error) => {
+                console.log("Error:", error);
+                /*                 console.log("Error:", error);
+                                alert("An error occurred, please try again later.") */
+                enqueueSnackbar(`Error : ${error}`, {
+                    variant: "error",
+                    autoHideDuration: 5000
+                });
+            });
+        } catch (error) {
+            console.log("Error ===> ", error);
+            /*             console.log("Error ===> ", error);
+                        alert("An error occurred, please try again later.") */
+            enqueueSnackbar(`Error : ${error}`, {
+                variant: "error",
+                autoHideDuration: 5000
+            });
+        }
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            phone: '',
+            message: '',
+        },
+        validationSchema: toFormikValidationSchema(validationSchema),
+        onSubmit: async (values: z.infer<typeof validationSchema>) => {
+            submitForm(values);
+        },
+    });
 
     return (
         <>
@@ -143,7 +261,7 @@ export default function ContactPage() {
                                     I will get back to you within 24 hours. If you have a more urgent
                                     request, please email me at bilalmohib7896@gmail.com
                                 </p>
-                                <form action="#" method="POST" className="mt-10">
+                                <form onSubmit={formik.handleSubmit} className="mt-10">
                                     <div className="space-y-7">
                                         <div>
                                             <label
@@ -155,12 +273,16 @@ export default function ContactPage() {
                                             <div className="mt-2">
                                                 <input
                                                     type="text"
+                                                    value={formik.values.name}
+                                                    onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                     name="name"
                                                     id="name"
                                                     autoComplete="name"
                                                     placeholder="Enter your name e.g. Alice Smith"
                                                     className="block w-full rounded-xl border-0 bg-slate-50 px-4 py-4 text-md leading-4 text-slate-900 shadow-sm shadow-sky-100/50 ring-1 ring-inset ring-slate-200 transition-colors duration-200 ease-in-out placeholder:text-slate-400 hover:bg-white focus:border-0 focus:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600/60"
                                                 />
+                                                <p className="text-red-400 mt-1"> {formik.touched.name && formik.errors.name} </p>
                                             </div>
                                         </div>
                                         <div>
@@ -175,10 +297,14 @@ export default function ContactPage() {
                                                     id="email"
                                                     name="email"
                                                     type="email"
+                                                    value={formik.values.email}
+                                                    onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                     autoComplete="email"
                                                     placeholder="Enter your email"
                                                     className="block w-full rounded-xl border-0 bg-slate-50 px-4 py-4 text-md leading-4 text-slate-900 shadow-sm shadow-sky-100/50 ring-1 ring-inset ring-slate-200 transition-colors duration-200 ease-in-out placeholder:text-slate-400 hover:bg-white focus:border-0 focus:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600/60"
                                                 />
+                                                <p className="text-red-400 mt-1"> {formik.touched.email && formik.errors.email} </p>
                                             </div>
                                         </div>
                                         <div>
@@ -198,11 +324,15 @@ export default function ContactPage() {
                                                     type="tel"
                                                     name="phone"
                                                     id="phone"
+                                                    value={formik.values.phone}
+                                                    onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                     autoComplete="tel"
                                                     aria-describedby="phone-description"
                                                     placeholder="+1 (800) 123-4567"
                                                     className="block w-full rounded-xl border-0 bg-slate-50 px-4 py-4 text-md leading-4 text-slate-900 shadow-sm shadow-sky-100/50 ring-1 ring-inset ring-slate-200 transition-colors duration-200 ease-in-out placeholder:text-slate-400 hover:bg-white focus:border-0 focus:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600/60"
                                                 />
+                                                <p className="text-red-400 mt-1"> {formik.touched.phone && formik.errors.phone} </p>
                                             </div>
                                         </div>
                                         <div>
@@ -224,11 +354,15 @@ export default function ContactPage() {
                                                 <textarea
                                                     id="message"
                                                     name="message"
+                                                    value={formik.values.message}
+                                                    onChange={formik.handleChange}
+                                                    onBlur={formik.handleBlur}
                                                     rows={5}
                                                     aria-describedby="message-description"
                                                     placeholder="Tell me a little bit about your project..."
                                                     className="block w-full rounded-xl border-0 bg-slate-50 px-4 py-4 text-md leading-6 text-slate-900 shadow-sm shadow-sky-100/50 ring-1 ring-inset ring-slate-200 transition-colors duration-200 ease-in-out placeholder:text-slate-400 hover:bg-white focus:border-0 focus:bg-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-600/60"
                                                 />
+                                                <p className="text-red-400 mt-1"> {formik.touched.message && formik.errors.message} </p>
                                             </div>
                                         </div>
                                         <fieldset>
@@ -242,6 +376,8 @@ export default function ContactPage() {
                                                             id="web-development"
                                                             name="web-development"
                                                             type="checkbox"
+                                                            checked={servicesNeeded.webDevelopment}
+                                                            onChange={() => setServicesNeeded({ ...servicesNeeded, webDevelopment: !servicesNeeded.webDevelopment })}
                                                             className="h-4 w-4 rounded border-slate-300/80 bg-slate-50 text-sky-600 shadow-sm shadow-sky-100/50 focus:outline-none focus:ring-transparent"
                                                         />
                                                     </div>
@@ -261,6 +397,8 @@ export default function ContactPage() {
                                                                 id="web-design"
                                                                 name="web-design"
                                                                 type="checkbox"
+                                                                checked={servicesNeeded.webDesign}
+                                                                onChange={() => setServicesNeeded({ ...servicesNeeded, webDesign: !servicesNeeded.webDesign })}
                                                                 className="h-4 w-4 rounded border-slate-300/80 bg-slate-50 text-sky-600 shadow-sm shadow-sky-100/50 focus:outline-none focus:ring-transparent"
                                                             />
                                                         </div>
@@ -281,6 +419,8 @@ export default function ContactPage() {
                                                                 id="consulting"
                                                                 name="consulting"
                                                                 type="checkbox"
+                                                                checked={servicesNeeded.consulting}
+                                                                onChange={() => setServicesNeeded({ ...servicesNeeded, consulting: !servicesNeeded.consulting })}
                                                                 className="h-4 w-4 rounded border-slate-300/80 bg-slate-50 text-sky-600 shadow-sm shadow-sky-100/50 focus:outline-none focus:ring-transparent"
                                                             />
                                                         </div>
@@ -300,6 +440,8 @@ export default function ContactPage() {
                                                             <input
                                                                 id="other"
                                                                 name="other"
+                                                                checked={servicesNeeded.other}
+                                                                onChange={() => setServicesNeeded({ ...servicesNeeded, other: !servicesNeeded.other })}
                                                                 type="checkbox"
                                                                 className="h-4 w-4 rounded border-slate-300/80 bg-slate-50 text-sky-600 shadow-sm shadow-sky-100/50 focus:outline-none focus:ring-transparent"
                                                             />

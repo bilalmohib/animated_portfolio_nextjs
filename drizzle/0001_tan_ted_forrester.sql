@@ -1,0 +1,1 @@
+ALTER TABLE "contact_us_form" DROP COLUMN IF EXISTS "services_needed";

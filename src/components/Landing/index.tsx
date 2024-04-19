@@ -1,15 +1,16 @@
 'use client'
 import Image from 'next/image'
-import styles from './style.module.scss'
-import { useRef, useLayoutEffect } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
-import { slideUp } from './animation';
+import { useRef, useLayoutEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { ScrollTrigger } from 'gsap/all';
 import Magnetic from '@/common/Magnetic';
+import { slideUp } from './animation';
+import styles from './style.module.scss';
 
 export default function Landing() {
-
+  const router = useRouter();
   const firstText = useRef(null);
   const secondText = useRef(null);
   const slider = useRef(null);
@@ -84,7 +85,14 @@ export default function Landing() {
               <hr className='my-4 border border-t-0 border-x-0 border-b-[1px] border-solid border-gray-600 w-10/12 ssm:w-full' />
               <div className='flex justify-between md:justify-center gap-4'>
                 <Magnetic>
-                  <button className='border border-solid border-black hover:bg-black hover:text-white py-2 px-4 transition duration-300 ease-in-out'>Contact</button>
+                  <button
+                    onClick={() => {
+                      router.push("/contact")
+                    }}
+                    className='border border-solid border-black hover:bg-black hover:text-white py-2 px-4 transition duration-300 ease-in-out'
+                  >
+                    Contact
+                  </button>
                 </Magnetic>
                 <Magnetic>
                   <button className='border border-solid border-black hover:bg-black hover:text-white py-2 px-4 transition duration-300 ease-in-out'>Projects</button>
