@@ -3,6 +3,7 @@ import React from 'react';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { Analytics } from '@vercel/analytics/react';
 import SnackbarProviderWrapper from '@/providers/SnackbarProviderWrapper';
 
 export const metadata = {
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <Footer />
         </SnackbarProviderWrapper>
+        <Analytics />
       </body>
     </html>
   );

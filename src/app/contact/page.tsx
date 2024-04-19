@@ -2,16 +2,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
+import { useSnackbar } from 'notistack'
 import { useEffect, useState } from 'react';
-/* import { db } from "@/db"; */
 import { z } from "zod"
 import { useFormik } from 'formik';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import { contactUsForm } from "@/db/schema";
-import axios from "axios";
 import { addContactUsForm } from "@/actions/contactUsFormActions";
 import Rounded from '../../common/RoundedButton';
-import { useSnackbar } from 'notistack'
 
 const validationSchema = z.object({
     name: z.string().min(1, "Name is required").max(100),
@@ -39,14 +36,12 @@ export default function ContactPage() {
         }
     }, []);
 
-    const [servicesNeeded, setServicesNeeded] = useState
-        <ServicesNeededType>
-        ({
-            webDevelopment: false,
-            webDesign: false,
-            consulting: false,
-            other: false
-        });
+    const [servicesNeeded, setServicesNeeded] = useState<ServicesNeededType>({
+        webDevelopment: false,
+        webDesign: false,
+        consulting: false,
+        other: false
+    });
 
     const submitForm = async (data: z.infer<typeof validationSchema>) => {
         console.log("Form Data just before sending to server ===> ", data);
