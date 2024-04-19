@@ -435,7 +435,10 @@ export default function ContactPage() {
                                     <div className="mt-10 border-t border-slate-200 pt-8">
                                         <button
                                             type="submit"
-                                            className="w-full !text-base sm:!text-lg"
+                                            className="w-full !text-base sm:!text-lg
+                                            disabled:bg-gray-400 disabled:cursor-not-allowed
+                                            "
+                                            disabled={formik.isSubmitting}
                                         >
                                             <Rounded>
                                                 <p>Get Started</p>

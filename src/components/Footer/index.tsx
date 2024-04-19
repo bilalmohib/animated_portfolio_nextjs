@@ -1,5 +1,11 @@
+"use client";
+import { z } from "zod"
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect } from 'react';
+import { useFormik } from 'formik';
+import { subsribeToNewsletter } from '@/actions/subsribeToEmail';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
 import clsx from 'clsx'
 
 import Button from '@/common/Button';
@@ -13,6 +19,7 @@ import {
     GitHubIcon,
     EmailIcon,
 } from './SocialIcons'
+import { useSnackbar } from 'notistack';
 
 const links = [
     { label: 'Home', href: '/' },
@@ -61,6 +68,10 @@ interface SocialLinkProps {
     href: string
 }
 
+const validationSchema = z.object({
+    email: z.string().min(1, "Email is required").email("Invalid email address"),
+});
+
 function SocialLink({ icon: Icon, label, ...props }: SocialLinkProps) {
     return (
         <Link
@@ -74,6 +85,59 @@ function SocialLink({ icon: Icon, label, ...props }: SocialLinkProps) {
 }
 
 function Footer({ newsletter = true }) {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    // close all snackbars on unmount
+    useEffect(() => {
+        return () => {
+            closeSnackbar();
+        }
+    }, []);
+
+    const submitForm = async (data: z.infer<typeof validationSchema>) => {
+        console.log("Form Data just before sending to server ===> ", data);
+
+        const contactFormDetails: { email: string, role: "user" | "admin" } = {
+            email: data.email,
+            role: (data.email !== "bilalmohib7896@gmail.com") ? "user" : "admin",
+        }
+
+        console.log("Contact Form Details ===> ", contactFormDetails);
+
+        try {
+            await subsribeToNewsletter(contactFormDetails.email, contactFormDetails.role).then(() => {
+                enqueueSnackbar('Thank you for subscribing to my newsletter! You will receive an email shortly to confirm your subscription.', {
+                    variant: "default",
+                    autoHideDuration: 5000
+                });
+                // 
+                formik.resetForm();
+            }).catch((error) => {
+                console.log("Error:", error);
+                enqueueSnackbar(`Oops! A Error occured saving your information : ${error}`, {
+                    variant: "error",
+                    autoHideDuration: 5000
+                });
+            });
+        } catch (error) {
+            console.log("Error ===> ", error);
+            enqueueSnackbar(`Oops! A Error occured saving your information : ${error}`, {
+                variant: "error",
+                autoHideDuration: 5000
+            });
+        }
+    }
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+        },
+        validationSchema: toFormikValidationSchema(validationSchema),
+        onSubmit: async (values: z.infer<typeof validationSchema>) => {
+            submitForm(values);
+        },
+    });
+
     return (
         <section className={clsx(newsletter && 'pt-12 sm:pt-16')}>
             {newsletter && (
@@ -99,8 +163,7 @@ function Footer({ newsletter = true }) {
                                     </p>
                                 </div>
                                 <form
-                                    action="#"
-                                    method="post"
+                                    onSubmit={formik.handleSubmit}
                                     className="relative mt-10 w-full max-w-lg lg:mt-0"
                                 >
                                     <input
@@ -109,12 +172,21 @@ function Footer({ newsletter = true }) {
                                         required
                                         placeholder="Enter your email"
                                         autoComplete="email"
+                                        id="email"
+                                        name="email"
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
                                     />
+                                    <p className="text-red-400 mt-1"> {formik.touched.email && formik.errors.email} </p>
                                     <button
                                         type="submit"
-                                        className="absolute right-1.5 top-1.5 inline-flex h-11 items-center rounded-full bg-sky-900 px-5 py-3 text-sm font-semibold text-sky-50 outline-none transition duration-200 ease-in-out hover:bg-sky-800 focus:outline-none sm:px-7 sm:text-md"
+                                        className="absolute right-1.5 top-1.5 inline-flex h-11 items-center rounded-full bg-sky-900 px-5 py-3 text-sm font-semibold text-sky-50 outline-none transition duration-200 ease-in-out hover:bg-sky-800 focus:outline-none sm:px-7 sm:text-md disabled:bg-gray-400 disabled:text-white disabled:cursor-not-allowed"
+                                        disabled={formik.isSubmitting}
                                     >
-                                        Subscribe
+                                        {
+                                            formik.isSubmitting ? "Subscribing..." : "Subscribe"
+                                        }
                                     </button>
                                 </form>
                             </div>

@@ -1,6 +1,6 @@
 # Portfolio Website 🌟
 
-This is a portfolio website built using Next.js ⚛️, Framer Motion 🎥, and GSAP 🌈. It showcases your work and skills in an amazing and visually appealing way. ✨
+This is a portfolio website built using Next.js ⚛️, Framer Motion 🎥, and GSAP 🌈. It showcases my work and skills in an amazing and visually appealing way. ✨
 
 ## Features 🚀
 
