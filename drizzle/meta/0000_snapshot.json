@@ -1,5 +1,5 @@
 {
-  "id": "e1769f33-1ec3-481a-9798-dd41e3077d5f",
+  "id": "d34b5600-d629-426d-8049-0ef36d6b975a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -16,19 +16,19 @@
         },
         "name": {
           "name": "name",
-          "type": "varchar(256)",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": true
         },
         "email": {
           "name": "email",
-          "type": "varchar(256)",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": true
         },
         "phone": {
           "name": "phone",
-          "type": "varchar(256)",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": true
         },
@@ -43,6 +43,13 @@
           "type": "json",
           "primaryKey": false,
           "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -72,6 +79,13 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'user'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},

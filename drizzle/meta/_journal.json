@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1713466049826,
-      "tag": "0000_robust_skullbuster",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1713466145564,
-      "tag": "0001_tan_ted_forrester",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1713466269113,
-      "tag": "0002_icy_typhoid_mary",
+      "when": 1713536377012,
+      "tag": "0000_groovy_shape",
       "breakpoints": true
     }
   ]

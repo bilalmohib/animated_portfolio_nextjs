@@ -6,7 +6,10 @@ export const subsribers = pgTable("subsribers", {
     id: serial("id").primaryKey(),
     email: varchar("email", { length: 256 }).notNull(),
     role: userRoleEnum("role").default("user").notNull(),
-    /*     created_at: timestamp("created_at", { mode: "date" }).defaultNow().notNull() */
+    created_at: timestamp("created_at", {
+        mode: "date",
+        withTimezone: true
+    }).defaultNow()
 });
 
 export const contactUsForm = pgTable("contact_us_form", {
@@ -15,6 +18,9 @@ export const contactUsForm = pgTable("contact_us_form", {
     email: varchar("email").notNull(),
     phone: varchar("phone").notNull(),
     message: text("message").notNull(),
-    /*     servicesNeeded: json("services_needed") */
-    /*  created_at: timestamp("created_at", { mode: "date" }).defaultNow() */
+    servicesNeeded: json("services_needed"),
+    created_at: timestamp("created_at", {
+        mode: "date",
+        withTimezone: true
+    }).defaultNow()
 });

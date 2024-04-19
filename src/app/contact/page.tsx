@@ -20,6 +20,13 @@ const validationSchema = z.object({
     message: z.string().min(1, "Message is required"),
 });
 
+export interface ServicesNeededType {
+    webDevelopment: boolean,
+    webDesign: boolean,
+    consulting: boolean,
+    other: boolean
+}
+
 export default function ContactPage() {
     let image = "https://as1.ftcdn.net/v2/jpg/01/44/50/82/1000_F_144508238_Fy3InkiNSB6nFRkDGB0ibEbTRNJaPK2U.jpg";
 
@@ -33,12 +40,7 @@ export default function ContactPage() {
     }, []);
 
     const [servicesNeeded, setServicesNeeded] = useState
-        <{
-            webDevelopment: boolean,
-            webDesign: boolean,
-            consulting: boolean,
-            other: boolean
-        }>
+        <ServicesNeededType>
         ({
             webDevelopment: false,
             webDesign: false,
@@ -54,30 +56,13 @@ export default function ContactPage() {
             email: data.email,
             phone: data.phone,
             message: data.message,
-            /*   servicesNeeded: servicesNeeded */
+            servicesNeeded: servicesNeeded
         }
 
         console.log("Contact Form Details ===> ", contactFormDetails);
 
-        /*         await fetch("/api/contactusForm", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(contactFormDetails),
-                }).then((response) => {
-                    if (response.ok) {
-                        console.log("Response ===> ", response);
-                        alert("Form submitted successfully");
-                    } else {
-                        alert("An error occurred, please try again later.")
-                    }
-                }).catch((error) => {
-                    console.log("Error:", error);
-                    alert("An error occurred, please try again later.")
-                }) */
         try {
-            await addContactUsForm(data.name, data.email, data.phone, data.message).then(() => {
+            await addContactUsForm(contactFormDetails.name, contactFormDetails.email, contactFormDetails.phone, contactFormDetails.message, servicesNeeded).then(() => {
                 enqueueSnackbar('Thank you for contacting me. I will get back to you soon.', {
                     variant: "default",
                     autoHideDuration: 5000
@@ -94,18 +79,14 @@ export default function ContactPage() {
                 setServicesNeeded(localServicesNeeded);
             }).catch((error) => {
                 console.log("Error:", error);
-                /*                 console.log("Error:", error);
-                                alert("An error occurred, please try again later.") */
-                enqueueSnackbar(`Error : ${error}`, {
+                enqueueSnackbar(`Oops! A Error occured saving your information : ${error}`, {
                     variant: "error",
                     autoHideDuration: 5000
                 });
             });
         } catch (error) {
             console.log("Error ===> ", error);
-            /*             console.log("Error ===> ", error);
-                        alert("An error occurred, please try again later.") */
-            enqueueSnackbar(`Error : ${error}`, {
+            enqueueSnackbar(`Oops! A Error occured saving your information : ${error}`, {
                 variant: "error",
                 autoHideDuration: 5000
             });
