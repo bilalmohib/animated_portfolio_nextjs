@@ -57,11 +57,11 @@ export default function Header() {
                     {/* <Magnetic>
                         <Link href='/work' className='block hover:underline text-lg hover:text-indigo-600'>Work</Link>
                     </Magnetic> */}
-                    {/* <Magnetic>
-                        <Link href='/about' className='block hover:underline text-lg hover:text-indigo-600'>About</Link>
-                    </Magnetic> */}
                     <Magnetic>
                         <Link href='/contact' className='block hover:underline text-lg hover:text-indigo-600'>Contact</Link>
+                    </Magnetic>
+                    <Magnetic>
+                        <a href='https://www.linkedin.com/newsletters/6945124839913320448/' target="_blank" rel="noreferrer" className='block hover:underline text-lg hover:text-indigo-600'>Blog</a>
                     </Magnetic>
                 </div>
 

@@ -19,6 +19,10 @@ import {
     GitHubIcon,
     EmailIcon,
 } from './SocialIcons'
+
+import { SiUpwork } from "react-icons/si";
+import { FcAcceptDatabase } from "react-icons/fc";
+
 import { useSnackbar } from 'notistack';
 
 const links = [
@@ -60,6 +64,16 @@ const socialLinks = [
         icon: GitHubIcon,
         href: 'https://github.com/bilalmohib',
     },
+    {
+        label: 'Upwork',
+        icon: GitHubIcon,
+        href: 'https://www.upwork.com/freelancers/~013a136c7081592898',
+    },
+    {
+        label: "Newsletter",
+        icon: EmailIcon,
+        href: "https://www.linkedin.com/newsletters/6945124839913320448/"
+    }
 ]
 
 interface SocialLinkProps {
@@ -78,7 +92,9 @@ function SocialLink({ icon: Icon, label, ...props }: SocialLinkProps) {
             className="flex items-center justify-center gap-2.5 rounded-full border border-slate-600/90 py-2.5 text-sm text-slate-50 duration-200 ease-in-out hover:bg-slate-800 hover:text-white lg:gap-2 xl:gap-2.5"
             {...props}
         >
-            <Icon className="h-4 w-4 shrink-0 text-slate-200 duration-200 ease-in-out group-hover:fill-slate-100" />
+            {(label === "Upwork") && <SiUpwork />}
+            {(label === "Newsletter" && <FcAcceptDatabase />)}
+            {(label !== "Upwork" && label !== "Newsletter") && <Icon className="h-4 w-4 shrink-0 text-slate-200 duration-200 ease-in-out group-hover:fill-slate-100" />}
             {label}
         </Link>
     )
@@ -251,6 +267,8 @@ function Footer({ newsletter = true }) {
                                 {socialLinks.map((socialLink) => (
                                     <SocialLink
                                         key={`footer-social-link-${socialLink.label}`}
+                                        /*  icon={socialLink.icon} */
+                                        // In case of upwork icon is not a component
                                         icon={socialLink.icon}
                                         label={socialLink.label}
                                         href={socialLink.href}

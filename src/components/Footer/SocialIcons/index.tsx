@@ -135,3 +135,22 @@ export function EmailIcon(props: SocialIconProps) {
         </svg>
     )
 }
+
+export function UpworkIcon(props: SocialIconProps) {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            {...props}
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.75v14.5m-4.75-4.75h9.5m-9.5-4.75l9.5 9.5"
+            />
+        </svg>
+    )
+}
