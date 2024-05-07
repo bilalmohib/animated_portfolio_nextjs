@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/react';
 import SnackbarProviderWrapper from '@/providers/SnackbarProviderWrapper';
+import GoogleAdsense from '@/components/GoogleAdsense';
 
 export const metadata = {
   title: 'Muhammad Bilal Mohib-ul-Nabi - Full Stack Typescript/NextJS/FastAPI Developer',
@@ -58,6 +59,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </SnackbarProviderWrapper>
         <Analytics />
+
+        <GoogleAdsense
+          pId={process.env.GOOGLE_ADSENSE_PUB_ID!}
+        />
       </body>
     </html>
   );
